@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "minico": "^1.0.1",
+    "msgpack-lite": "^0.1.26"
+  }
+}
