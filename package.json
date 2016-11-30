@@ -1,6 +1,6 @@
 {
   "name": "worker-process",
-  "version": "0.0.0",
+  "version": "0.0.0-rc1",
   "description": "Dead simple worker child processes for Node.js with a modern Promise API and a binary IPC.",
   "author": "Ivan K <ivan@sq10.net>",
   "license": "MIT",
