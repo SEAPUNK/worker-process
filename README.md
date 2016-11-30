@@ -1,6 +1,13 @@
 worker-process
 ===
 
+[![npm version](https://img.shields.io/npm/v/worker-process.svg?style=flat-square)](https://npmjs.com/package/worker-process)
+[![javascript standard style](https://img.shields.io/badge/code%20style-standard-blue.svg?style=flat-square)](http://standardjs.com/)
+[![travis build](https://img.shields.io/travis/SEAPUNK/worker-process/master.svg?style=flat-square)](https://travis-ci.org/SEAPUNK/worker-process)
+[![coveralls coverage](https://img.shields.io/coveralls/SEAPUNK/worker-process.svg?style=flat-square)](https://coveralls.io/github/SEAPUNK/worker-process)
+[![david dependencies](https://david-dm.org/SEAPUNK/worker-process.svg?style=flat-square)](https://david-dm.org/SEAPUNK/worker-process)
+[![david dev dependencies](https://david-dm.org/SEAPUNK/worker-process/dev-status.svg?style=flat-square)](https://david-dm.org/SEAPUNK/worker-process)
+
 Dead simple worker child processes for Node.js with a modern Promise API
 and a binary IPC.
 
