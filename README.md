@@ -22,6 +22,7 @@ that "just works".
 ```js
 import {createWorker} from 'worker-process'
 import msgpack from 'msgpack-lite'
+import delay from 'delay'
 
 async function main () {
   // Create a worker.
@@ -43,6 +44,9 @@ async function main () {
       // Send a message to the worker
       const data = 'hello, worker!'
       await worker.send(msgpack.encode(data))
+
+      // Wait a second for a message to arrive
+      await delay(1000)
     })()
   ])
 
@@ -64,6 +68,7 @@ main().catch(err => {
 ```js
 import {connect} from 'worker-process'
 import msgpack from 'msgpack-lite'
+import exit from 'exit'
 
 async function main () {
   // Connect to the IPC socket.
@@ -80,10 +85,15 @@ async function main () {
   // Send messages to the parent process
   const data = ['hello', 'world!']
   await workerConnection.send(msgpack.encode(data))
+
+  // Wait for the message to complete sending, and then close the connection
+  await workerConnection.finish()
 }
 
 console.log('worker:start')
-main().catch(err => {
+main().then(() => {
+  exit(0)
+}).catch(err => {
   console.error('worker:fail')
   console.error(err)
 })
