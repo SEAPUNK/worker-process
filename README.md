@@ -22,7 +22,6 @@ that "just works".
 ```js
 import {createWorker} from 'worker-process'
 import msgpack from 'msgpack-lite'
-import delay from 'delay'
 
 async function main () {
   // Create a worker.
@@ -45,8 +44,11 @@ async function main () {
       const data = 'hello, worker!'
       await worker.send(msgpack.encode(data))
 
-      // Wait a second for a message to arrive
-      await delay(1000)
+      // Wait until the worker stops
+      await worker.lifetime
+      // or optionally stop the worker yourself if you're no longer waiting
+      // for more messages from it
+      worker.kill()
     })()
   ])
 
