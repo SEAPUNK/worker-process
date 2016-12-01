@@ -28,7 +28,7 @@ async function main () {
   const worker = await createWorker('./worker.js')
 
   let gotMessage = false
-  await Promise.race([
+  await Promise.all([
     // Wait for the worker to complete (resolve) or fail (reject).
     worker.lifetime,
 
@@ -43,12 +43,6 @@ async function main () {
       // Send a message to the worker
       const data = 'hello, worker!'
       await worker.send(msgpack.encode(data))
-
-      // Wait until the worker stops
-      await worker.lifetime
-      // or optionally stop the worker yourself if you're no longer waiting
-      // for more messages from it
-      worker.kill()
     })()
   ])
 
