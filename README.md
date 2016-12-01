@@ -20,13 +20,49 @@ that "just works".
 `master.js`
 
 ```js
-// TODO
+import {createWorker} from 'worker-process'
+import msgpack from 'msgpack-lite'
+
+async function main () {
+  // Create a worker.
+  const worker = await createWorker('./worker.js')
+
+  let gotMessage = false
+  await Promise.race([
+    // Wait for the worker to complete (resolve) or fail (reject).
+    worker.lifetime,
+
+    // Do what you want to do with the worker.
+    (async () => {
+      // Handle messages from worker process
+      worker.onmessage = message => {
+        console.log('master:message', msgpack.decode(message))
+        gotMessage = true
+      }
+
+      // Send a message to the worker
+      const data = 'hello, worker!'
+      await worker.send(msgpack.encode(data))
+    })()
+  ])
+
+  // If the worker exits successfully but you didn't finish what you wanted to
+  // do, you can handle it
+  if (!gotMessage) {
+    throw new Error('Worker did not say hello :(')
+  }
+}
+
+main().catch(err => {
+  console.error('master:fail')
+  console.error(err)
+})
 ```
 
 `worker.js`
 
 ```js
-import workerProcess from 'worker-process'
+import {connect} from 'worker-process'
 import msgpack from 'msgpack-lite'
 
 async function main () {
@@ -34,10 +70,10 @@ async function main () {
   // All nuances and errors from here on will be handled by worker-process
   // by logging the error and exiting the process with exit code 1 to
   // guarantee safety and consistency
-  const workerConnection = await workerProcess.connect()
+  const workerConnection = await connect()
 
   // Handle messages from the parent process
-  workerConnection.onmessage = function (message) {
+  workerConnection.onmessage = message => {
     console.log('worker:message', msgpack.decode(message))
   }
 

@@ -26,6 +26,7 @@
     "url": "https://github.com/SEAPUNK/worker-process/issues"
   },
   "dependencies": {
+    "debug": "^2.3.3",
     "exit": "^0.1.2",
     "minico": "^1.0.1"
   },
