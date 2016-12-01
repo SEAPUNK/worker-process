@@ -17,6 +17,14 @@ that "just works".
 
 ---
 
+- [API documentation](docs/api.md)
+- [Binary protocol](docs/protocol.md)
+- [Design rules](docs/rules.md)
+
+I recommend using MessagePack as the IPC message format.
+
+---
+
 `master.js`
 
 ```js
@@ -94,14 +102,6 @@ main().then(() => {
   console.error(err)
 })
 ```
-
----
-
-- [API documentation](docs/api.md)
-- [Binary protocol](docs/protocol.md)
-- [Design rules](docs/rules.md)
-
-I recommend using MessagePack as the IPC message format.
 
 ---
 
