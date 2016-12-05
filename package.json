@@ -6,7 +6,7 @@
   "license": "MIT",
   "main": "lib/index.js",
   "scripts": {
-    "test": "standard"
+    "test": "ava"
   },
   "keywords": [
     "worker",
@@ -31,6 +31,7 @@
     "minico": "^1.0.1"
   },
   "devDependencies": {
+    "ava": "^0.17.0",
     "benchmark": "^2.1.2",
     "standard": "^8.3.0"
   },
