@@ -31,7 +31,7 @@
     "minico": "^1.0.1"
   },
   "devDependencies": {
-    "ava": "^0.17.0",
+    "ava": "^0.18.0",
     "benchmark": "^2.1.2",
     "standard": "^8.3.0"
   },
