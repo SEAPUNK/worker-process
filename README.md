@@ -11,7 +11,7 @@ worker-process
 Dead simple worker child processes for Node.js with a modern Promise API
 and a binary IPC.
 
-For people who don't want to use external servers for binary IPC,
+For people who don't want to use full-blown servers for binary IPC,
 don't want to mess with `child_process`, and want to use something
 that "just works".
 
