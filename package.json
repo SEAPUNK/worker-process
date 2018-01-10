@@ -1,23 +1,14 @@
 {
   "name": "worker-process",
-  "version": "0.0.0",
+  "version": "0.0.0-rc2",
   "description": "Dead simple worker child processes for Node.js with a modern Promise API and a binary IPC.",
   "author": "Ivan K <ivan@sq10.net>",
   "license": "MIT",
   "main": "lib/index.js",
   "scripts": {
-    "test": "standard"
+    "test": "standard && ava"
   },
-  "keywords": [
-    "worker",
-    "process",
-    "child",
-    "child_process",
-    "ipc",
-    "modern",
-    "simple",
-    "safe"
-  ],
+  "keywords": ["worker", "process", "child", "child_process", "ipc", "modern", "simple", "safe"],
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/SEAPUNK/worker-process"
@@ -26,14 +17,15 @@
     "url": "https://github.com/SEAPUNK/worker-process/issues"
   },
   "dependencies": {
-    "exit": "^0.1.2",
-    "minico": "^1.0.1"
+    "debug": "^3.1.0",
+    "exit": "^0.1.2"
   },
   "devDependencies": {
-    "benchmark": "^2.1.2",
-    "standard": "^8.3.0"
+    "ava": "^0.24.0",
+    "benchmark": "^2.1.4",
+    "standard": "^10.0.3"
   },
   "engines": {
-    "node": ">=4"
+    "node": ">=8"
   }
 }
